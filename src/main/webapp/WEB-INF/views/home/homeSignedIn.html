@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
     <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <link href="../../../resources/css/thymeleaf.css" rel="stylesheet" media="screen" th:href="@{/resources/css/thymeleaf.css}" />
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
 </head>
@@ -17,7 +18,70 @@
         <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
     </th:block>
     <p>
-        Welcome to the Spring MVC Quickstart application!
+        Welcome to the currency converter for Zooplus!!!
+        Select the currencies you want to check:
+        
+        <form action="saveCustomer.html" th:action="@{/rate/oer}" th:object="${formData}" method="post">
+        
+        	<div>
+	        	<label for="currencyOrigin">Currency origin:</label>
+	            <select th:field="*{currencyOrigin}" th:remove="all-but-first">
+	                <option th:each="currency : ${currencies}"
+	                        th:value="${currency}" th:text="${currency}">Currency name</option>
+	                <option>USD</option>
+	                <option>EUR</option>
+	            </select>
+            </div>
+            
+            <div>
+	            <label for="currencyTarget">Currency target:</label>
+	            <select th:field="*{currencyTarget}" th:remove="all-but-first">
+	                <option th:each="currency : ${currencies}"
+	                        th:value="${currency}" th:text="${currency}">Currency name</option>
+	                <option>USD</option>
+	                <option>EUR</option>
+	            </select>
+            </div>
+            
+            <p th:if="${result != null}">
+	            <ul>
+				    <li>
+				    	<label>Rate:</label>
+				        <span th:text="${result}">Good Work!</span>
+				    </li>
+				</ul>
+            </p>
+            
+            <p th:if="${lastQueries != null}">
+            	<table>
+            		<thead>
+            			<th>Num</th>
+            			<th>Origin</th>
+            			<th>Target</th>
+            			<th>Rate</th>
+            			<th>Date</th>
+            		</thead>
+            		<tbody th:remove="all-but-first">
+            			<tr th:each="query, iterationStatus: ${lastQueries}">
+            				<td th:text="${iterationStatus.count}"></td>
+            				<td th:text="${query.originCurrency}"></td>
+            				<td th:text="${query.targetCurrency}"></td>
+            				<td th:text="${#numbers.formatDecimal(query.rate, 1, 3)}"></td>
+            				<td th:text="${#dates.format(query.created, 'dd-MMM-yyyy')}"></td>
+            			</tr>
+            			<tr>
+		                    <td>1</td>
+		                    <td>GBP</td>
+		                    <td>EUR</td>
+		                    <td>1.30</td>
+                		</tr>
+            		</tbody>
+            	</table>
+            </p>
+            
+            <input type="submit" />
+        </form>
+        
     </p>
 </div>
 </body>

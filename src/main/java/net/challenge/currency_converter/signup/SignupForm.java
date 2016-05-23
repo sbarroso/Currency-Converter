@@ -15,6 +15,18 @@ public class SignupForm {
 
     @NotBlank(message = SignupForm.NOT_BLANK_MESSAGE)
 	private String password;
+    
+    @NotBlank(message = SignupForm.NOT_BLANK_MESSAGE)
+    private String street;
+    
+    @NotBlank(message = SignupForm.NOT_BLANK_MESSAGE)
+    private String zip;
+    
+    @NotBlank(message = SignupForm.NOT_BLANK_MESSAGE)
+    private String city;
+    
+    @NotBlank(message = SignupForm.NOT_BLANK_MESSAGE)
+    private String country;
 
     public String getEmail() {
 		return email;
@@ -34,5 +46,37 @@ public class SignupForm {
 
 	public Account createAccount() {
         return new Account(getEmail(), getPassword(), "ROLE_USER");
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public String getZip() {
+		return zip;
+	}
+
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
 	}
 }

@@ -24,7 +24,7 @@
         <form action="saveCustomer.html" th:action="@{/rate/oer}" th:object="${formData}" method="post">
         
         	<div>
-	        	<label for="currencyOrigin">Currency origin:</label>
+	        	<label for="currencyOrigin">Current rate between</label>
 	            <select th:field="*{currencyOrigin}" th:remove="all-but-first">
 	                <option th:each="currency : ${currencies}"
 	                        th:value="${currency}" th:text="${currency}">Currency name</option>
@@ -34,7 +34,7 @@
             </div>
             
             <div>
-	            <label for="currencyTarget">Currency target:</label>
+	            <label for="currencyTarget">and</label>
 	            <select th:field="*{currencyTarget}" th:remove="all-but-first">
 	                <option th:each="currency : ${currencies}"
 	                        th:value="${currency}" th:text="${currency}">Currency name</option>
@@ -44,15 +44,12 @@
             </div>
             
             <p th:if="${result != null}">
-	            <ul>
-				    <li>
-				    	<label>Rate:</label>
-				        <span th:text="${result}">Good Work!</span>
-				    </li>
-				</ul>
+		    	<label>is</label>
+		        <span th:text="${result}">Good Work!</span>
             </p>
             
             <p th:if="${lastQueries != null}">
+            	<span><h3>Historical table</h3></span>
             	<table>
             		<thead>
             			<th>Num</th>

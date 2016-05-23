@@ -86,7 +86,7 @@ class RateController {
         Rate rate2 = new Rate(Currency.valueOf(origin), Currency.valueOf(target), rate);
         rateRepository.save(rate2);
         
-        model.addAttribute("lastQueries", rateRepository.findAll());
+        model.addAttribute("lastQueries", rateRepository.findTop10ByOrderByCreatedDesc());
         
         return "home/homeSignedIn";
     }
@@ -99,7 +99,7 @@ class RateController {
     @Secured({"ROLE_USER", "ROLE_ADMIN"})
     public OpenExchangeRates queryOpenExchangeRate2(Principal principal) {
         Assert.notNull(principal);
-
+        
         RestTemplate restTemplate = new RestTemplate();
         log.info(restTemplate.getForObject("https://openexchangerates.org/api/historical/2001-02-16.json?app_id="+appId, OpenExchangeRates.class).toString());
         return restTemplate.getForObject("https://openexchangerates.org/api/historical/2001-02-16.json?app_id="+appId, OpenExchangeRates.class);

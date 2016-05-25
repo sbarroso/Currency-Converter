@@ -64,6 +64,15 @@
 		        <span class="help-block" th:if="${#fields.hasErrors('country')}" th:errors="*{country}">Incorrect country</span>          
             </div>
         </div>
+        
+        <div class="form-group" th:classappend="${#fields.hasErrors('birthDate')}? 'has-error'">
+            <label for="birthDate" class="col-lg-2 control-label">Birthdate (dd/mm/yyyy)</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control datepicker" id="birthDate" placeholder="Birthdate" th:field="*{birthDate}" pattern="\d{1,2}/\d{1,2}/\d{4}" />
+                <span class="help-block" th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}">Incorrect birthDate</span>
+            </div>
+        </div>
+        
         <div class="form-group">
             <div class="col-lg-offset-2 col-lg-10">
                 <button type="submit" class="btn btn-default">Sign up</button>

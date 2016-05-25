@@ -1,6 +1,7 @@
 package net.challenge.currency_converter.signup;
 
-import org.hibernate.validator.constraints.*;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
 import net.challenge.currency_converter.account.Account;
 
@@ -27,6 +28,8 @@ public class SignupForm {
     
     @NotBlank(message = SignupForm.NOT_BLANK_MESSAGE)
     private String country;
+    
+    private String birthDate = "01/01/1990";
 
     public String getEmail() {
 		return email;
@@ -79,4 +82,13 @@ public class SignupForm {
 	public void setCountry(String country) {
 		this.country = country;
 	}
+
+	public String getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
+	}
+
 }

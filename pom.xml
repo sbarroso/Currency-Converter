@@ -16,6 +16,7 @@
         <!-- <spring.version>4.2.4.RELEASE</spring.version> -->
         <!-- AssertJ is not a part of Spring IO platform, so the version must be provided explicitly -->
         <assertj-core-version>3.3.0</assertj-core-version>
+        <cucumber.version>1.2.2</cucumber.version>
     </properties>
     <parent>
         <groupId>io.spring.platform</groupId>
@@ -181,6 +182,26 @@
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
+        
+        <!-- cucumber specific dependencies -->
+	      <dependency>
+	          <groupId>info.cukes</groupId>
+	          <artifactId>cucumber-java</artifactId>
+	          <version>${cucumber.version}</version>
+	          <scope>test</scope>
+	      </dependency>
+	      <dependency>
+	          <groupId>info.cukes</groupId>
+	          <artifactId>cucumber-spring</artifactId>
+	          <version>${cucumber.version}</version>
+	          <scope>test</scope>
+	      </dependency>
+	      <dependency>
+	          <groupId>info.cukes</groupId>
+	          <artifactId>cucumber-junit</artifactId>
+	          <version>${cucumber.version}</version>
+	          <scope>test</scope>
+	      </dependency>
     </dependencies>
     <build>
         <plugins>

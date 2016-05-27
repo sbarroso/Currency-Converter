@@ -1,9 +1,5 @@
 package net.challenge.currency_converter.signup;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +13,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import net.challenge.currency_converter.account.Account;
 import net.challenge.currency_converter.account.AccountService;
-import net.challenge.currency_converter.currency.Country;
 import net.challenge.currency_converter.web.MessageHelper;
 
 @Controller
@@ -31,14 +26,14 @@ public class SignupController {
 	@RequestMapping(value = "signup")
 	public String signup(Model model) {
 		model.addAttribute(new SignupForm());
-		model.addAttribute("countries", Country.findCountryNames());
+//		model.addAttribute("countries", Country.findCountryNames());
         return SIGNUP_VIEW_NAME;
 	}
 	
 	@RequestMapping(value = "signup", method = RequestMethod.POST)
 	public String signup(@Valid @ModelAttribute SignupForm signupForm, Errors errors, RedirectAttributes ra, Model model) {
 		if (errors.hasErrors()) {
-			model.addAttribute("countries", Country.findCountryNames());
+//			model.addAttribute("countries", Country.findCountryNames());
 			return SIGNUP_VIEW_NAME;
 		}
 		Account account = accountService.save(signupForm.createAccount());

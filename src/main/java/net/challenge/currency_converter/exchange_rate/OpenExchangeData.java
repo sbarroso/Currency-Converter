@@ -1,9 +1,8 @@
-package net.challenge.currency_converter.currency;
+package net.challenge.currency_converter.exchange_rate;
 
-import java.util.List;
 import java.util.Map;
 
-public class OpenExchangeRates {
+public class OpenExchangeData {
 	private String disclaimer;
 	
 	private String license;

@@ -31,7 +31,23 @@ public class SignupForm {
     
     private String birthDate = "01/01/1990";
 
-    public String getEmail() {
+    public SignupForm() {
+		super();
+	}
+
+	public SignupForm(String email, String password, String street, String zip, String city, String country,
+			String birthDate) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.street = street;
+		this.zip = zip;
+		this.city = city;
+		this.country = country;
+		this.birthDate = birthDate;
+	}
+
+	public String getEmail() {
 		return email;
 	}
 

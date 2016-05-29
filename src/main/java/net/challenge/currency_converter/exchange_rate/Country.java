@@ -1,4 +1,4 @@
-package net.challenge.currency_converter.currency;
+package net.challenge.currency_converter.exchange_rate;
 
 import java.util.Arrays;
 import java.util.List;

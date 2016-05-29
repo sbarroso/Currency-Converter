@@ -1,4 +1,4 @@
-package net.challenge.currency_converter.currency;
+package net.challenge.currency_converter.exchange_rate;
 
 import java.time.Instant;
 
@@ -7,10 +7,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Class that contains all the info needed to keep in the database relating the
+ * exchange rate between 2 currencies
+ *
+ * @author Santiago Barroso
+ *
+ */
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "currency")
-public class Rate implements java.io.Serializable {
+public class CurrencyExchangeRate implements java.io.Serializable {
 	
 	@Id
 	@GeneratedValue
@@ -24,11 +31,11 @@ public class Rate implements java.io.Serializable {
 
 	private Instant created = Instant.now();
 
-    protected Rate() {
+    protected CurrencyExchangeRate() {
 
 	}
 
-	public Rate(Currency originCurrency, Currency targetCurrency, Double rate) {
+	public CurrencyExchangeRate(Currency originCurrency, Currency targetCurrency, Double rate) {
 		super();
 		this.originCurrency = originCurrency;
 		this.targetCurrency = targetCurrency;
